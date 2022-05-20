@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 const RenderTables = () => {
     const tables = useSelector(getAllTables);
+    console.log(tables.status)
     return (
         <ListGroup variant="flush">
         {tables.map( table =>
