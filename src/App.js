@@ -5,7 +5,7 @@ import NavBar from "./components/views/NavBar";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { fetchTables } from "./redux/tablesRedux";
-import TablePage from "./components/pages/TablesPage";
+import TablesPage from "./components/pages/TablesPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -18,7 +18,7 @@ function App() {
       <Container>
         <Routes>
           <Route path="/" element={ <Home />} />
-          <Route path="/table/:id" element={ <TablePage /> } />
+          <Route path="/table/:id" element={ <TablesPage /> } />
         </Routes>
       </Container>
     </main>
