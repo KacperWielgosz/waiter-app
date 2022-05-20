@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { Container } from "react-bootstrap";
+import { Routes, Route } from "react-router-dom";
+import Home from "./components/pages/Home";
+import NavBar from "./components/views/NavBar";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { fetchTables } from "./redux/tablesRedux";
+import TablePage from "./components/pages/TablesPage";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => dispatch(fetchTables()), [dispatch]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main>
+      <NavBar />
+      <Container>
+        <Routes>
+          <Route path="/" element={ <Home />} />
+          <Route path="/table/:id" element={ <TablePage /> } />
+        </Routes>
+      </Container>
+    </main>
   );
 }
 
